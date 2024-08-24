@@ -18,6 +18,18 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('google_id')->nullable();
+            $table->enum('subscription_status', ['Active', 'Cancelled', 'Expired', 'Pending'])->default('Active');
+            $table->date('subscription_start_date')->nullable();
+            $table->date('subscription_end_date')->nullable();
+            $table->timestamp('trial_ends_at')->nullable();
+            $table->date('next_billing_date')->nullable();
+            $table->string('payment_method_id')->nullable();
+            $table->date('last_payment_date')->nullable();
+            $table->decimal('last_payment_amount', 8, 2)->nullable();
+            $table->string('profile_photo_path')->nullable();
+            $table->boolean('is_admin')->default(false);
+            $table->boolean('is_active')->default(true);
+            $table->timestamp('banned_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
