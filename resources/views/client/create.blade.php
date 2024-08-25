@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="heading">
-        Dashboard
+       Add Client 
     </x-slot>
 
-   <h2>View from dashboard page</h2> 
+   <h2>View from create page</h2> 
 </x-app-layout>

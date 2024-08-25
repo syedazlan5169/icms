@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="heading">
-        Dashboard
+       Reports 
     </x-slot>
 
-   <h2>View from dashboard page</h2> 
+   <h2>View from report page</h2> 
 </x-app-layout>

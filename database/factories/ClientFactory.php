@@ -18,7 +18,7 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id'=> $this->faker->numberBetween(0, 5),
+            'user_id'=> $this->faker->numberBetween(1, 5),
             'name' => $this->faker->name(),
             'mykad_ssm' => $this->faker->unique()->bothify('########-##-####'), // Random ID format
             'phone' => $this->faker->phoneNumber(),
