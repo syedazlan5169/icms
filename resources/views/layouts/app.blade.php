@@ -66,9 +66,8 @@
                       -->
                       <div x-show="open" @click.outside="open = false" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <!-- Active: "bg-gray-100", Not Active: "" -->
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                         <x-dropdown-link :href="route('profile.edit')">{{ __('Profile') }}</x-dropdown-link>
-                        <x-dropdown-link :href="route('profile.edit')">{{ __('Setting') }}</x-dropdown-link>
+                        <x-dropdown-link href="/setting">{{ __('Setting') }}</x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -138,7 +137,7 @@
         
           <header class="bg-white shadow">
             <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-              <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $heading }}</h1>
+              <h1 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">{{ $heading }}</h1>
             </div>
           </header>
           <main>
