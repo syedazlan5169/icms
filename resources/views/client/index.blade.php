@@ -26,7 +26,14 @@
                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $client->name }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $client->mykad_ssm }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $client->category }}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $client->status }}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm font-bold" x-data="{ status: '{{ $client->status }}' }" 
+                                :class="{
+                                    'text-green-600': status === 'Active',
+                                    'text-yellow-500': status === 'Expiring',
+                                    'text-red-600': status === 'Done'
+                                }">
+                                {{ $client->status }}
+                            </td>
                             <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                             <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $client->id }}</span></a>
                             </td>
