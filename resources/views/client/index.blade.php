@@ -3,6 +3,7 @@
         All Clients
     </x-slot>
 
+    <div x-data="{ edit: false }" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-5">
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="mt-8 flow-root">
           <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -26,16 +27,17 @@
                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $client->name }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $client->mykad_ssm }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $client->category }}</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm font-bold" x-data="{ status: '{{ $client->status }}' }" 
+                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                              <span x-data="{ status: '{{ $client->status }}'}"
                                 :class="{
-                                    'text-green-600': status === 'Active',
-                                    'text-yellow-500': status === 'Expiring',
-                                    'text-red-600': status === 'Done'
+                                  'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 w-16 justify-center': status === 'Active',
+                                  'inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20 w-16 justify-center': status === 'Expiring',
+                                  'inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20 w-16 justify-center': status === 'Done'
                                 }">
-                                {{ $client->status }}
+                                {{ $client->status }}</span>
                             </td>
                             <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $client->id }}</span></a>
+                            <a href="#target" x-on:click="edit = ! edit" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $client->id }}</span></a>
                             </td>
                         </tr>
                     @endforeach
@@ -47,5 +49,10 @@
           </div>
         </div>
       </div>
+      <div x-show="edit" id="edit_form" class="flex justify-center pt-10 text-4xl">
+        <p>Editing Here</p>
+      </div>
+      <div id="target" class="flex justify-center mt-10 text-red-500 text-5xl"><h1>Target Area</h1></div>
+    </div>>
 
 </x-app-layout>
