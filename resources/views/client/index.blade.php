@@ -3,7 +3,12 @@
         All Clients
     </x-slot>
 
-    <div x-data="{ edit: false }" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-5">
+    <div x-data="{ edit: false, selectedClientId: null }" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-5">
+    @if(session('success'))
+      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+          <span class="block sm:inline">{{ session('success') }}</span>
+      </div>
+    @endif
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="mt-8 flow-root">
           <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -40,14 +45,14 @@
                                 {{ $client->status }}</span>
                             </td>
                             <td class="relative whitespace-nowrap py-4 pl-3 text-right text-sm font-medium sm:pr-6">
-                              <a href="#target" x-on:click="edit = ! edit" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $client->id }}</span></a>
+                              <a href="#target" x-on:click="edit = ! edit; selectedClientId = '{{ $client->id }}'" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                             </td>
                             <td class="relative whitespace-nowrap py-4 pl-3 text-left text-sm font-medium sm:pl-0 sm:pr-6">
                               <form method="POST" action="{{ $client->id }}" id="delete-form-{{ $client->id }}" class="hidden">
                                 @csrf
                                 @method('DELETE')    
                               </form>
-                              <button class="text-red-600 hover:text-red-900" form="delete-form-{{ $client->id }}">Delete<span class="sr-only">, {{ $client->id }}</span></button>
+                              <button class="text-red-600 hover:text-red-900" form="delete-form-{{ $client->id }}">Delete</button>
                             </td>
                         </tr>
                     @endforeach
@@ -60,17 +65,9 @@
         </div>
       </div>
       <div x-show="edit" id="edit_form" class="flex justify-center pt-10 text-4xl">
-        <p>Editing Here</p>
+        <p>Editing Here <span x-text="selectedClientId"></span></p>
       </div>
       <div id="target" class="flex justify-center mt-10 text-red-500 text-5xl"><h1>Target Area</h1></div>
-    </div>>
-    <form method="POST" action="/{{ $client->id }}" id="delete-form" class="hidden">
-      @csrf
-      @method('DELETE')    
-    </form>
-    @if(session('success'))
-      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-          <span class="block sm:inline">{{ session('success') }}</span>
-      </div>
-    @endif
+    </div>
+
 </x-app-layout>
