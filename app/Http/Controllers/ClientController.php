@@ -12,4 +12,12 @@ class ClientController extends Controller
         $clients = Client::with('user')->paginate(10);
         return view('client.index', ['clients'=> $clients]);
     }
+
+    public function destroy($id)
+    {
+        $client = Client::findOrFail($id);
+        $client->delete();
+        return redirect('/index')->with('success', 'Client deleted successfully');
+    }
+
 }

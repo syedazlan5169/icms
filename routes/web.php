@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
 
     //ClientController
     Route::get('/index', [ClientController::class, 'index']);
+    Route::delete('{id}', [ClientController::class,'destroy']);
 });
 
 Route::get('/auth/google/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
