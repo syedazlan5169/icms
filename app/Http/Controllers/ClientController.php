@@ -20,4 +20,10 @@ class ClientController extends Controller
         return redirect('/index')->with('success', 'Client deleted successfully');
     }
 
+    public function show($id)
+    {
+        $client = Client::findOrFail($id);
+        return view('client.show', ['client'=> $client]);
+    }
+
 }

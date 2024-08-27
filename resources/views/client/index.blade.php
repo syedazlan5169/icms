@@ -45,7 +45,7 @@
                                 {{ $client->status }}</span>
                             </td>
                             <td class="relative whitespace-nowrap py-4 pl-3 text-right text-sm font-medium sm:pr-6">
-                              <a href="#target" x-on:click="edit = ! edit; selectedClientId = '{{ $client->id }}'" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                              <button class="text-indigo-600 hover:text-indigo-900" x-on:click="edit = ! edit; selectedClientId = '{{ $client->id }}'" form="edit-form">Edit</button>
                             </td>
                             <td class="relative whitespace-nowrap py-4 pl-3 text-left text-sm font-medium sm:pl-0 sm:pr-6">
                               <form method="POST" action="{{ $client->id }}" id="delete-form-{{ $client->id }}" class="hidden">
@@ -64,6 +64,7 @@
           </div>
         </div>
       </div>
+      <form method="GET" :action="`/client/${selectedClientId}`" id="edit-form" class="hidden"></form>
       <div x-show="edit" id="edit_form" class="flex justify-center pt-10 text-4xl">
         <p>Editing Here <span x-text="selectedClientId"></span></p>
       </div>

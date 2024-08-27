@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
 
     //ClientController
     Route::get('/index', [ClientController::class, 'index']);
+    Route::get('/client/{id}', [ClientController::class, 'show']);
     Route::delete('{id}', [ClientController::class,'destroy']);
 });
 
