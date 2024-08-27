@@ -31,7 +31,6 @@
                       <x-nav-link href="/expired" :active="request()->is('expired')">Expiring Clients</x-nav-link>
                       <x-nav-link href="/create" :active="request()->is('create')">Add New Client</x-nav-link>
                       <x-nav-link href="/report" :active="request()->is('report')">Reports</x-nav-link>
-                      <x-nav-link href="/report" :active="request()->is('report')">New Features</x-nav-link>
                     </div>
                   </div>
                 </div>
