@@ -19,7 +19,7 @@
                    <tr>
                      <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Mykad/SSM</th>
-                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Category</th>
+                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Premium Price</th>
                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
                      <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                        <span class="sr-only">Edit</span>
@@ -34,7 +34,7 @@
                        <tr>
                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $client->name }}</td>
                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $client->mykad_ssm }}</td>
-                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $client->category }}</td>
+                           <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ 'RM ' . number_format($client->premium, 2, '.', ',') }}</td>
                            <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                              <span x-data="{ status: '{{ $client->status }}'}"
                                :class="{

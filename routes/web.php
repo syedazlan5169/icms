@@ -30,9 +30,7 @@ Route::middleware(['auth','verified'])->group(function () {
         return view('setting');
     });
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [ClientController::class,'dashboard']);
 });
 
 Route::middleware('auth')->group(function () {

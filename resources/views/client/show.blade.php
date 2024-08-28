@@ -125,14 +125,14 @@
                   <div class="sm:col-span-2">
                   <label for="vehicle_model" class="block text-sm font-medium leading-6 text-gray-900">Vehicle Model</label>
                   <div class="mt-2">
-                     <input type="text" name="vehicle_model" value="{{ $client->vehicle_model }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
+                     <input type="text" name="vehicle_model" value="{{ $client->vehicle_model }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                   </div>
                   </div>
 
                   <div class="sm:col-span-2">
                   <label for="plate" class="block text-sm font-medium leading-6 text-gray-900">Plate</label>
                   <div class="mt-2">
-                     <input type="text" name="plate" id="plate" value="{{ $client->plate }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
+                     <input type="text" name="plate" id="plate" value="{{ $client->plate }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                   </div>
                   </div>
           
@@ -214,7 +214,6 @@
             </div>
       
          <div class="mt-6 flex items-center justify-end gap-x-6">
-         <button type="button" class="text-sm font-semibold leading-6 text-gray-900">CANCEL</button>
          <x-primary-button type="submit">Update</x-primary-button> 
          </div>
    
