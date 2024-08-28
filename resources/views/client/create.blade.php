@@ -107,15 +107,15 @@
                   <label for="category" class="block text-sm font-medium leading-6 text-gray-900">Category</label>
                   <div class="mt-2">
                      <select id="category" name="category" autocomplete="category" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        <option value="KERETA" selected>Kereta</option>
-                        <option value="MOTOR">Motor</option>
-                        <option value="SPIKPA">Foreign Worker (Pekerja Asing)</option>
-                        <option value="FIRE">Fire (Kebakaran Rumah & Kedai)</option>
-                        <option value="PERSONAL ACCIDENT">Personal Accident</option>
-                        <option value="MEDICAL CARD">Medical Card</option>
-                        <option value="HIBAH TAKAFUL">Hibah Takaful</option>
-                        <option value="TRAVEL">Haji, Umrah, & Travel</option>
-                        <option value="CONTRACTOR">Kontraktor</option>
+                        <option value="Kereta" selected>Kereta</option>
+                        <option value="Motor">Motor</option>
+                        <option value="Foreign Worker">Foreign Worker (Pekerja Asing)</option>
+                        <option value="Fire (Kebakaran Rumah & Kedai)">Fire (Kebakaran Rumah & Kedai)</option>
+                        <option value="Personal Accident">Personal Accident</option>
+                        <option value="Medical Card">Medical Card</option>
+                        <option value="Hibah TakafulL">Hibah Takaful</option>
+                        <option value="Travel">Haji, Umrah, & Travel</option>
+                        <option value="Kontraktor">Kontraktor</option>
                      </select>
                   </div>
                   </div>
@@ -123,7 +123,7 @@
                   <div class="sm:col-span-2">
                   <label for="vehicle_model" class="block text-sm font-medium leading-6 text-gray-900">Vehicle Model</label>
                   <div class="mt-2">
-                     <input type="text" name="vehicle_model" id="vehicel_model"  placeholder="SAGA FLX 1.5" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
+                     <input type="text" name="vehicle_model" id="vehicle_model"  placeholder="SAGA FLX 1.5" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
                   </div>
                   </div>
 
@@ -140,28 +140,28 @@
                      <select id="insurance_company" name="insurance_company" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         <option selected value="AIA">AIA General Berhad</option>
                         <option value="AIG">AIG Malaysia Insurance Berhad</option>
-                        <option value="ALLIANZ">Allianz General Insurance Company (Malaysia) Berhad</option>
-                        <option value="BERJAYA SOMPO">Berjaya Sompo Insurance Berhad</option>
-                        <option value="CHUBB">Chubb Insurance Malaysia Berhad</option>
-                        <option value="ETIQA INSURANCE">Etiqa General Insurance Berhad</option>
-                        <option value="GENERALI">Generali Insurance Malaysia Berhad</option>
-                        <option value="GREAT EASTERN">Great Eastern General Insurance (Malaysia) Berhad</option>
-                        <option value="LIBERTY GENERAL">Liberty General Insurance Berhad (formerly known as AmGeneral Insurance Berhad)</option>
-                        <option value="LONPAC">Lonpac Insurance Berhad</option>
-                        <option value="MSIG">MSIG Insurance (Malaysia) Bhd</option>
-                        <option value="PACIFIC ORIENT">Pacific & Orient Insurance Co. Berhad</option>
-                        <option value="PACIFIC INSURANCE">Pacific Insurance Berhad</option>
-                        <option value="PROGRESSIVE">Progressive Insurance Berhad</option>
-                        <option value="QBE">QBE Insurance (Malaysia) Berhad</option>
-                        <option value="RHB">RHB Insurance Berhad</option>
-                        <option value="TOKIO MARINE">Tokio Marine Insurance (Malaysia) Berhad</option>
-                        <option value="TUNE">Tune Insurance Malaysia Berhad</option>
-                        <option value="ZURICH GENERAL">Zurich General Insurance Malaysia Berhad</option>
-                        <option value="STMB">Syarikat Takaful Malaysia Am Berhad</option>
-                        <option value="IKHLAS">Takaful Ikhlas General Berhad</option>
-                        <option value="ZTMB">Zurich General Takaful Malaysia Berhad</option>
-                        <option value="EGTB">Etiqa General Takaful Berhad</option>
-                        <option value="OTHERS">Others</option>
+                        <option value="Allianz General Insurance Company (Malaysia) Berhad">Allianz General Insurance Company (Malaysia) Berhad</option>
+                        <option value="Berjaya Sompo Insurance Berhad">Berjaya Sompo Insurance Berhad</option>
+                        <option value="AIG">Chubb Insurance Malaysia Berhad</option>
+                        <option value="Etiqa General Insurance Berhad">Etiqa General Insurance Berhad</option>
+                        <option value="Generali Insurance Malaysia Berhad">Generali Insurance Malaysia Berhad</option>
+                        <option value="Great Eastern General Insurance">Great Eastern General Insurance (Malaysia) Berhad</option>
+                        <option value="Liberty General Insurance Berhad">Liberty General Insurance Berhad (formerly known as AmGeneral Insurance Berhad)</option>
+                        <option value="Lonpac Insurance Berhad">Lonpac Insurance Berhad</option>
+                        <option value="MSIG Insurance">MSIG Insurance (Malaysia) Bhd</option>
+                        <option value="Pacific & Orient Insurance Co. Berhad">Pacific & Orient Insurance Co. Berhad</option>
+                        <option value="Pacific Insurance Berhad">Pacific Insurance Berhad</option>
+                        <option value="Progressive Insurance Berhad">Progressive Insurance Berhad</option>
+                        <option value="QBE Insurance (Malaysia) Berhad">QBE Insurance (Malaysia) Berhad</option>
+                        <option value="RHB Insurance Berhad">RHB Insurance Berhad</option>
+                        <option value="Tokio Marine Insurance">Tokio Marine Insurance (Malaysia) Berhad</option>
+                        <option value="Tune Insurance Malaysia Berhad">Tune Insurance Malaysia Berhad</option>
+                        <option value="Zurich General Insurance Malaysia Berhad">Zurich General Insurance Malaysia Berhad</option>
+                        <option value="Syarikat Takaful Malaysia Am Berhad">Syarikat Takaful Malaysia Am Berhad</option>
+                        <option value="Takaful Ikhlas General Berhad">Takaful Ikhlas General Berhad</option>
+                        <option value="Zurich General Takaful Malaysia Berhad">Zurich General Takaful Malaysia Berhad</option>
+                        <option value="Etiqa General Takaful Berhad">Etiqa General Takaful Berhad</option>
+                        <option value="Others">Others</option>
                      </select>
                   </div>
                   </div>
@@ -169,36 +169,10 @@
                   <div class="sm:col-span-2">
                      <label for="premium" class="block text-sm font-medium leading-6 text-gray-900">Premium Price</label>
                      <div class="mt-2">
-                        <input type="text" name="premium" id="premium" placeholder="10,000"
-                               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required
-                               oninput="formatCurrency(this)">
+                        <input type="text" name="premium" id="premium" placeholder="1000"
+                               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
                      </div>
                  </div>
-                 <script>
-                     function formatCurrency(input) {
-                        // Get the current value and preserve the caret position
-                        let value = input.value;
-                        
-                        // Allow only digits and up to one decimal point
-                        value = value.replace(/[^0-9.]/g, '');
-
-                        // Split the value into integer and decimal parts
-                        const parts = value.split('.');
-
-                        // Format the integer part with commas
-                        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-                        // Join the parts back together
-                        input.value = parts.join('.');
-
-                        // Move the caret back to its original position after formatting
-                        // This step helps to avoid jumping the caret to the end of the input
-                        if (input.value.endsWith('.')) {
-                              input.value = input.value.slice(0, -1);
-                              input.value = `${input.value}.`;
-                        }
-                     }
-                 </script>
 
                <div x-data="datePicker()" class="col-span-6 flex justify-between gap-4">
                   <div class="w-1/4">
