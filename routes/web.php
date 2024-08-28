@@ -47,7 +47,8 @@ Route::middleware('auth')->group(function () {
     //Route::post('/client/create', function () {
     //    dd(request()->all());
     //});
-    Route::get('/client/{id}', [ClientController::class, 'show']);
+    Route::get('/client/{id}', [ClientController::class, 'show'])->name('client.show');
+    Route::patch('/client/{id}',[ClientController::class, 'patch']);
     Route::delete('/client/{id}', [ClientController::class,'destroy']);
 
 });
