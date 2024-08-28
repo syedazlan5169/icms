@@ -42,8 +42,14 @@ Route::middleware('auth')->group(function () {
 
     //ClientController
     Route::get('/index', [ClientController::class, 'index']);
+    Route::get('/expired', [ClientController::class, 'expired']);
+    Route::post('/client/create', [ClientController::class, 'store']);
+    //Route::post('/client/create', function () {
+    //    dd(request()->all());
+    //});
     Route::get('/client/{id}', [ClientController::class, 'show']);
     Route::delete('/client/{id}', [ClientController::class,'destroy']);
+
 });
 
 Route::get('/auth/google/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
