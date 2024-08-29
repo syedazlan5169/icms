@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,7 +31,7 @@ Route::middleware(['auth','verified'])->group(function () {
         return view('setting');
     });
 
-    Route::get('/dashboard', [ClientController::class,'dashboard']);
+    Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
 });
 
 Route::middleware('auth')->group(function () {

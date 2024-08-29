@@ -1,9 +1,9 @@
-<x-app-layout>
+<x-app-layout :user="$user">
     <x-slot name="heading">
         Dashboard
     </x-slot>
 
-    <div x-data="{ 
+    <div x-data="{
         totalClients: {{ $totalClients }}, 
         expiringClients: {{ $expiringClients }}, 
         totalExpiring: '{{ $totalExpiringFormatted }}' 

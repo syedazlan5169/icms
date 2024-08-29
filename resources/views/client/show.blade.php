@@ -183,28 +183,28 @@
                   <label for="inception_date" class="block text-sm font-medium leading-6 text-gray-900">Inception Date</label>
                   <div class="mt-2">
                      <input type="date" name="inception_date" id="inception_date" value="{{ $client->inception_date }}"
-                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
+                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" readonly>
                   </div>
                   </div>
                   <div class="w-1/4">
                   <label for="expiry_date" class="block text-sm font-medium leading-6 text-gray-900">Expiry Date</label>
                   <div class="mt-2">
                      <input type="date" name="expiry_date" id="expiry_date" value="{{ $client->expiry_date }}"
-                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" readonly>
                   </div>
                   </div>
                   <div class="w-1/4">
                   <label for="renewal_date" class="block text-sm font-medium leading-6 text-gray-900">Renewal Date</label>
                   <div class="mt-2">
                      <input type="date" name="renewal_date" id="renewal_date" value="{{ $client->renewal_date }}"
-                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" readonly>
                   </div>
                   </div>
                   <div class="w-1/4">
                   <label for="reminder_date" class="block text-sm font-medium leading-6 text-gray-900">Reminder Date</label>
                   <div class="mt-2">
                      <input type="date" name="reminder_date" id="reminder_date" value="{{ $client->reminder_date }}"
-                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" readonly>
                   </div>
                   </div>
                </div>
@@ -215,6 +215,7 @@
       
          <div class="mt-6 flex items-center justify-end gap-x-6">
          <x-primary-button type="submit">Update</x-primary-button> 
+         <x-primary-button type="button" class="bg-green-700 hover:bg-green-900">Renew</x-primary-button> 
          </div>
    
       </div>
