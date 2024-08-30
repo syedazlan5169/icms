@@ -31,7 +31,7 @@ return new class extends Migration
             $table->date('expiry_date')->nullable();
             $table->date('renewal_date')->nullable();
             $table->date('reminder_date')->nullable();
-            $table->enum('status',['Active','Expiring','Done'])->default('Active');
+            $table->enum('status',['Active','Expiring','Expired'])->default('Active');
             $table->timestamps();
         });
     }

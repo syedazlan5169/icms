@@ -22,7 +22,7 @@
             <p class="text-2xl font-semibold text-gray-900" x-text="totalClients"></p>
             <div class="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
             <div class="text-sm">
-                <a href="/index" class="font-medium text-indigo-600 hover:text-indigo-500">View all</a>
+                <a href="/clients/index" class="font-medium text-indigo-600 hover:text-indigo-500">View all</a>
             </div>
             </div>
         </dd>
@@ -40,7 +40,7 @@
             <p class="text-2xl font-semibold text-gray-900" x-text="expiringClients"></p>
             <div class="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
             <div class="text-sm">
-                <a href="/expired" class="font-medium text-indigo-600 hover:text-indigo-500">View all</a>
+                <a href="/clients/expired" class="font-medium text-indigo-600 hover:text-indigo-500">View all</a>
             </div>
             </div>
         </dd>
@@ -58,7 +58,7 @@
             <p class="text-2xl font-semibold text-gray-900" x-text="totalExpiring"></p>
             <div class="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
             <div class="text-sm">
-                <a href="/expired" class="font-medium text-indigo-600 hover:text-indigo-500">View all</a>
+                <a href="/clients/expired" class="font-medium text-indigo-600 hover:text-indigo-500">View all</a>
             </div>
             </div>
         </dd>

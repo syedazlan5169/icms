@@ -54,13 +54,13 @@ class ClientController extends Controller
                 'renewal_date'=> request('renewal_date'),
                 'reminder_date'=> request('reminder_date')
             ]);
-            return redirect('/client.create')->with('success','Client added successfully');
+            return redirect('/client/create')->with('success','Client added successfully');
     }
     public function destroy($id)
     {
         $client = Client::findOrFail($id);
         $client->delete();
-        return redirect('/client.index')->with('success', 'Client deleted successfully');
+        return redirect('/clients/index')->with('success', 'Client deleted successfully');
     }
     public function show($id)
     {

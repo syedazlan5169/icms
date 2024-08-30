@@ -105,9 +105,9 @@
                                     </svg>
                                 </div>
                                 <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                                    <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Delete Client</h3>
+                                    <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Delete User</h3>
                                     <div class="mt-2">
-                                        <p class="text-sm text-gray-500">Are you sure you want to delete <span class="font-bold text-red-500" x-text="selectedClientName"></span>? This action cannot be undone.</p>
+                                        <p class="text-sm text-gray-500">Are you sure you want to delete <span class="font-bold text-red-500" x-text="selectedUserName"></span>? This action cannot be undone.</p>
                                     </div>
                                 </div>
                             </div>

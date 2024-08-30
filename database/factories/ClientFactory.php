@@ -59,7 +59,7 @@ class ClientFactory extends Factory
             'expiry_date' => $expiry_date->format('Y-m-d'),
             'renewal_date' => $renewal_date->format('Y-m-d'),
             'reminder_date' => $reminder_date->format('Y-m-d'),
-            'status' => $status,
+            'status' => 'Active'
         ];
     }
 }

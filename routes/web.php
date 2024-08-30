@@ -43,8 +43,10 @@ Route::middleware(['auth','verified', ShareUserData::class, AdminAccess::class])
 {
     //UserController
     Route::view('user/create', 'user.create');
+    Route::post('/user/create', [UserController::class, 'store']);
     Route::get('/users/index', [UserController::class,'index']);
     Route::view('user/{id}', 'user.show');
+    Route::delete('/user/{id}', [UserController::class, 'destroy']);
 });
 
 route::get('testview', function () {
