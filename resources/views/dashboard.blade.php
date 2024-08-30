@@ -1,4 +1,4 @@
-<x-app-layout :user="$user">
+<x-app-layout>
     <x-slot name="heading">
         Dashboard
     </x-slot>

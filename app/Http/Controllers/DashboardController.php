@@ -24,9 +24,6 @@ class DashboardController extends Controller
         
         $totalExpiringFormatted = 'RM ' . number_format($totalExpiring, 2, '.', ',');
 
-        // Retrive logged in user data
-        $user = Auth::user();        
-
-        return view('dashboard', compact('totalClients', 'expiringClients', 'totalExpiringFormatted', 'user'));
+        return view('dashboard', compact('totalClients', 'expiringClients', 'totalExpiringFormatted'));
     }
 }

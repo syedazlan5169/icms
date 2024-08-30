@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="heading">
-       Reports 
+        Edit User
     </x-slot>
 
-   <h2>View from report page</h2> 
+    <p>This is view from user.show page</p>
 </x-app-layout>

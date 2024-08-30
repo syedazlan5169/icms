@@ -27,10 +27,12 @@
                     <div class="ml-10 flex items-baseline space-x-4">
                       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                       <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link>
-                      <x-nav-link href="/index" :active="request()->is('index')">All Clients</x-nav-link>
-                      <x-nav-link href="/expired" :active="request()->is('expired')">Expiring Clients</x-nav-link>
-                      <x-nav-link href="/create" :active="request()->is('create')">Add New Client</x-nav-link>
-                      <x-nav-link href="/report" :active="request()->is('report')">Reports</x-nav-link>
+                      <x-nav-link href="/clients/index" :active="request()->is('clients/index')">All Clients</x-nav-link>
+                      <x-nav-link href="/clients/expired" :active="request()->is('clients/expired')">Expiring Clients</x-nav-link>
+                      <x-nav-link href="/client/create" :active="request()->is('client/create')">Add New Client</x-nav-link>
+                      @if($loggedInUser->is_admin)
+                        <x-nav-link href="/users/index" :active="request()->is('users/index')">User Management</x-nav-link>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -38,10 +40,7 @@
                   <div class="ml-4 flex items-center md:ml-6">
                     <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span class="absolute -inset-1.5"></span>
-                      <span class="sr-only">View notifications</span>
-                      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-                      </svg>
+                      <p>Hello, {{ $loggedInUser->name }}</p>
                     </button>
         
                     <!-- Profile dropdown -->

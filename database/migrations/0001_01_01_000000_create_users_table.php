@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('google_id')->nullable();
-            $table->enum('subscription_status', ['Active', 'Cancelled', 'Expired', 'Pending'])->default('Active');
+            $table->enum('subscription_status', ['Active', 'Expired', 'Pending'])->default('Active');
             $table->date('subscription_start_date')->nullable();
             $table->date('subscription_end_date')->nullable();
             $table->timestamp('trial_ends_at')->nullable();
