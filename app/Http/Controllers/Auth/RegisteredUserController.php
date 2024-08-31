@@ -39,6 +39,8 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'subscription_start_date' => now(),
+            'subscription_end_date' => now()->addDays(7)
         ]);
 
         event(new Registered($user));

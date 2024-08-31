@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -28,11 +29,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('google_id')->nullable();
-            $table->foreignIdFor(\App\Models\Subscription::class)->default(1);
-            $table->enum('subscription_status', ['Active', 'Expired', 'Trial'])->default('Trial');
+            $table->foreignIdFor(\App\Models\Subscription::class)->default(2);
+            $table->enum('subscription_status', ['Active', 'Expired'])->default('Active');
             $table->date('subscription_start_date')->nullable();
             $table->date('subscription_end_date')->nullable();
-            $table->timestamp('trial_ends_at')->nullable();
             $table->string('profile_photo_path')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->rememberToken();

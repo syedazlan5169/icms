@@ -22,11 +22,11 @@
                   <table class="min-w-full divide-y divide-gray-300">
                     <thead class="bg-gray-50">
                       <tr>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Id</th>
                         <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Admin</th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Subscription End Date</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Subscription End</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Subscription Plan</th>
                         <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Subcription Status</th>
                         <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                           <span class="sr-only">Edit</span>
@@ -39,16 +39,29 @@
                     <tbody class="divide-y divide-gray-200 bg-white">
                       @foreach ($users as $user)
                           <tr>
-                              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $user->id}}</td>
                               <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $user->name }}</td>
                               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $user->email }}</td>
-                              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $user->is_admin }}</td>
-                              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $user->subcription_end_date }}</td>
-                              <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">{{ $user->is_admin }}</td>
+                              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">{{ \Carbon\Carbon::parse($user->subscription_end_date)->format('d-m-Y') }}</td>
+                              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">
+                                @if($user->subscription_id == 1)
+                                    Admin 
+                                @elseif($user->subscription_id == 2)
+                                    Trial 
+                                @elseif($user->subscription_id == 3)
+                                    Basic 
+                                @elseif($user->subscription_id == 4)
+                                    Pro 
+                                @elseif($user->subscription_id == 4)
+                                    Premium
+                                @else
+                                    Unknown
+                                @endif
+                            </td>
+                              <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500 text-center">
                                 <span x-data="{ status: '{{ $user->subscription_status}}'}"
                                   :class="{
                                     'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 w-16 justify-center': status === 'Active',
-                                    'inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20 w-16 justify-center': status === 'Pending',
                                     'inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20 w-16 justify-center': status === 'Expired'
                                   }">
                                   {{ $user->subscription_status }}</span>

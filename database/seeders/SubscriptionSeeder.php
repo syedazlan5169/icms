@@ -15,6 +15,13 @@ class SubscriptionSeeder extends Seeder
     public function run(): void
     {
         Subscription::create([
+            'name' => 'Admin',
+            'price' => 9999999,
+            'description' => 'All features a available',
+            'duration_in_days' => 9999,
+            'is_active' => true,
+        ]);
+        Subscription::create([
             'name' => 'Trial',
             'price' => 0,
             'description' => 'Trial plan with all features',
