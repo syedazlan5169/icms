@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Client;
+use App\Models\User;
 use Carbon\Carbon;
 
 class UpdateStatusCommand extends Command
@@ -38,6 +39,9 @@ class UpdateStatusCommand extends Command
         Client::where('expiry_date', '<=', $now->copy()->addMonth())
                  ->where('expiry_date', '>', $now)
                  ->update(['status' => 'Expiring']);
+
+        User::where('subscription_end_date', '<', $now)->update(['subscription_status' => 'Expired']);
+        User::where('subscription_end_date', '>', $now)->update(['subscription_status' => 'Active']);
 
         $this->info('Status updated successfully.');
     }

@@ -10,6 +10,10 @@
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                <span class="block sm:inline">{{ session('success') }}</span>
             </div>
+         @elseif(session('error'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+               <span class="block sm:inline">{{ session('error') }}</span>
+            </div>
          @endif
          <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
@@ -169,7 +173,7 @@
                   <div class="sm:col-span-2">
                      <label for="premium" class="block text-sm font-medium leading-6 text-gray-900">Premium Price</label>
                      <div class="mt-2">
-                        <input type="text" name="premium" id="premium" placeholder="1000"
+                        <input type="number" min="0" step="0.01" name="premium" id="premium" placeholder="1000"
                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
                      </div>
                  </div>
@@ -243,9 +247,18 @@
 
                </div>
             </div>
-      
+         <div class="flex justify-center">
+            <p class="mt-0 py-0 text-l">
+               Your client quota is {{ $loggedInUser->clients->count() }} / 
+               @if($loggedInUser->subscription->client_quota == -1)
+                   &infin;
+               @else
+                   {{ $loggedInUser->subscription->client_quota }}
+               @endif
+           </p>
+         </div>
          <div class="mt-6 flex items-center justify-end gap-x-6">
-         <x-primary-button type="submit">Save</x-primary-button> 
+            <x-primary-button type="submit">Save</x-primary-button> 
          </div>
    
       </div>

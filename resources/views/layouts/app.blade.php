@@ -138,23 +138,23 @@
           </nav>
         
           <header class="bg-white shadow">
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex">
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
               <div>
                 <h1 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">{{ $heading }}</h1>
               </div>
               <div>
                 @php
-                use Carbon\Carbon;
-                $startDate = Carbon::parse($loggedInUser->subscription_start_date);
-                $endDate = Carbon::parse($loggedInUser->subscription_end_date);
-                $differenceInDays = $startDate->diffInDays($endDate);
+                    use Carbon\Carbon;
+                    $endDate = Carbon::parse($loggedInUser->subscription_end_date);
+                    $differenceInDays = round(now()->diffInDays($endDate, false)); 
                 @endphp
-
-                <p>Subscription Duration: {{ $differenceInDays }} days</p>
+            
+                @if($differenceInDays < 0)
+                    <p class="font-bold text-red-500">Your subscription has expired. Please renew your plan of contact our support if this has been mistaken.</p>
+                @else
+                    <p>Subscription Duration: {{ $differenceInDays }} days</p>
+                @endif
               </div>
-
-              
-
             </div>
           </header>
           <main>

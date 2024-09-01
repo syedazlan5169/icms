@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Artisan;
 
 class UserController extends Controller
 {
@@ -61,7 +62,8 @@ class UserController extends Controller
             {
                 $user->update(['password' => Hash::make(request('password'))]);
             }
-                
+        
+            Artisan::call('status:update');
             return redirect()->route('user.show', ['id' => $user->id])->with('success', 'User updated successfully');
 
     }

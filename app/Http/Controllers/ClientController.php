@@ -23,6 +23,11 @@ class ClientController extends Controller
     }
     public function store()
     {
+        $loggedInUser = Auth::user();
+        if ($loggedInUser->clients->count() >= $loggedInUser->subscription->client_quota && $loggedInUser->subscription->client_quota != -1) {
+            return redirect()->back()->with('error', 'You have reached your client quota limit. Delete some client or upgrade your plan.');
+        }
+
         request()->validate([
             'name' => ['required'],
             'mykad_ssm' => ['required'],
