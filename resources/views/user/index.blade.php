@@ -52,7 +52,7 @@
                                     Basic 
                                 @elseif($user->subscription_id == 4)
                                     Pro 
-                                @elseif($user->subscription_id == 4)
+                                @elseif($user->subscription_id == 5)
                                     Premium
                                 @else
                                     Unknown

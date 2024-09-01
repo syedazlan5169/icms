@@ -33,6 +33,8 @@ class UserController extends Controller
                 'email'=> request('email'),
                 'is_admin'=> request('is_admin'),
                 'subscription_id'=> request('subscription_id'),
+                'subscription_start_date'=> request('subscription_start_date'),
+                'subscription_end_date'=> request('subscription_end_date'),
                 'password'=> Hash::make(request('password'))
             ]);
             return redirect('/user/create')->with('success','Client added successfully');

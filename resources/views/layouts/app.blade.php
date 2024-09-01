@@ -138,17 +138,22 @@
           </nav>
         
           <header class="bg-white shadow">
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-              <h1 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">{{ $heading }}</h1>
-              @php
-                  use Carbon\Carbon;
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex">
+              <div>
+                <h1 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">{{ $heading }}</h1>
+              </div>
+              <div>
+                @php
+                use Carbon\Carbon;
+                $startDate = Carbon::parse($loggedInUser->subscription_start_date);
+                $endDate = Carbon::parse($loggedInUser->subscription_end_date);
+                $differenceInDays = $startDate->diffInDays($endDate);
+                @endphp
 
-                  $startDate = Carbon::parse($loggedInUser->subscription_start_date);
-                  $endDate = Carbon::parse($loggedInUser->subscription_end_date);
-                  $differenceInDays = $startDate->diffInDays($endDate);
-              @endphp
+                <p>Subscription Duration: {{ $differenceInDays }} days</p>
+              </div>
 
-              <p>Subscription Duration: {{ $differenceInDays }} days</p>
+              
 
             </div>
           </header>

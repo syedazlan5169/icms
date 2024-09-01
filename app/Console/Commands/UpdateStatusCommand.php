@@ -29,7 +29,7 @@ class UpdateStatusCommand extends Command
     {
         $now = Carbon::now();
 
-        Client::where('expiry_date', '<', $now)->update(['status' => 'Done']);
+        Client::where('expiry_date', '<', $now)->update(['status' => 'Expired']);
 
         Client::where('inception_date', '<=', $now)
                  ->where('expiry_date', '>', $now)

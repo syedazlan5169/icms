@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 
 class ClientController extends Controller
 {
@@ -112,6 +113,8 @@ class ClientController extends Controller
                 'renewal_date'=> request('renewal_date'),
                 'reminder_date'=> request('reminder_date')
             ]);
+
+            Artisan::call('status:update');
             return redirect()->route('client.show', ['id' => $client->id])->with('success', 'Client updated successfully');
         }
         else
