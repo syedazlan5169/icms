@@ -41,7 +41,7 @@ class ClientFactory extends Factory
         }
 
         return [
-            'user_id'=> $this->faker->numberBetween(1, 10),
+            'user_id'=> $this->faker->numberBetween(1, 4),
             'name' => $this->faker->name(),
             'mykad_ssm' => $this->faker->unique()->bothify('########-##-####'), // Random ID format
             'phone' => $this->faker->phoneNumber(),
