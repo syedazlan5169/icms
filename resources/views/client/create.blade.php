@@ -139,15 +139,36 @@
                   </div>
 
                   <div class="sm:col-span-4 col-span-6">
-                        <label for="insurance_company" class="block text-sm font-medium leading-6 text-gray-900">Insurance Company</label>
-                        <div class="mt-2">
-                           <select id="insurance_company" name="insurance_company" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                              <option selected value="AIA">AIA General Berhad</option>
-                              <option value="AIG">AIG Malaysia Insurance Berhad</option>
-                              <option value="Allianz General Insurance Company (Malaysia) Berhad">Allianz General Insurance Company (Malaysia) Berhad</option>
-                              <!-- other options -->
-                           </select>
-                        </div>
+                     <label for="insurance_company" class="block text-sm font-medium leading-6 text-gray-900">Insurance Company</label>
+                     <div class="mt-2">
+                        <input list="insurance_companies" id="insurance_company" name="insurance_company" 
+                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Select or type insurance company">
+                        <datalist id="insurance_companies">
+                              <option value="AIA General Berhad">
+                              <option value="AIG Malaysia Insurance Berhad">
+                              <option value="Allianz General Insurance Company (Malaysia) Berhad">
+                              <option value="Berjaya Sompo Insurance Berhad">
+                              <option value="Chubb Insurance Malaysia Berhad">
+                              <option value="Etiqa General Insurance Berhad">
+                              <option value="Generali Insurance Malaysia Berhad">
+                              <option value="Great Eastern General Insurance (Malaysia) Berhad">
+                              <option value="Liberty General Insurance Berhad (formerly known as AmGeneral Insurance Berhad)">
+                              <option value="Lonpac Insurance Berhad">
+                              <option value="MSIG Insurance (Malaysia) Bhd">
+                              <option value="Pacific & Orient Insurance Co. Berhad">
+                              <option value="Pacific Insurance Berhad">
+                              <option value="Progressive Insurance Berhad">
+                              <option value="QBE Insurance (Malaysia) Berhad">
+                              <option value="RHB Insurance Berhad">
+                              <option value="Tokio Marine Insurance (Malaysia) Berhad">
+                              <option value="Tune Insurance Malaysia Berhad">
+                              <option value="Zurich General Insurance Malaysia Berhad">
+                              <option value="Syarikat Takaful Malaysia Am Berhad">
+                              <option value="Takaful Ikhlas General Berhad">
+                              <option value="Zurich General Takaful Malaysia Berhad">
+                              <option value="Etiqa General Takaful Berhad">
+                        </datalist>
+                     </div>
                   </div>
 
                   <div class="sm:col-span-2 col-span-6">

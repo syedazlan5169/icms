@@ -105,7 +105,7 @@
             <div class="border-b border-gray-900/10 pb-12">
                <h2 class="text-xl font-semibold leading-7 text-gray-900">Insurance Details</h2>
                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                  <div class="sm:col-span-2">
+                  <div class="sm:col-span-2 col-span-6">
                   <label for="category" class="block text-sm font-medium leading-6 text-gray-900">Category</label>
                   <div class="mt-2">
                      <select id="category" name="category" autocomplete="category" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -122,21 +122,20 @@
                   </div>
                   </div>
          
-                  <div class="sm:col-span-2">
+                  <div class="sm:col-span-2 col-span-6">
                   <label for="vehicle_model" class="block text-sm font-medium leading-6 text-gray-900">Vehicle Model</label>
                   <div class="mt-2">
                      <input type="text" name="vehicle_model" value="{{ $client->vehicle_model }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                   </div>
                   </div>
 
-                  <div class="sm:col-span-2">
+                  <div class="sm:col-span-2 col-span-6">
                   <label for="plate" class="block text-sm font-medium leading-6 text-gray-900">Plate</label>
                   <div class="mt-2">
                      <input type="text" name="plate" id="plate" value="{{ $client->plate }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                   </div>
                   </div>
-          
-                  <div class="sm:col-span-4">
+                  <div class="sm:col-span-4 col-span-6">
                      <label for="insurance_company" class="block text-sm font-medium leading-6 text-gray-900">Insurance Company</label>
                      <div class="mt-2">
                         <input list="insurance_companies" id="insurance_company" name="insurance_company" value="{{ $client->insurance_company }}"
@@ -170,7 +169,7 @@
                   </div>
 
          
-                  <div class="sm:col-span-2">
+                  <div class="sm:col-span-2 col-span-6">
                      <label for="premium" class="block text-sm font-medium leading-6 text-gray-900">Premium Price</label>
                      <div class="mt-2">
                         <input type="text" name="premium" id="premium" value="{{ $client->premium }}"
@@ -178,29 +177,29 @@
                      </div>
                  </div>
 
-               <div class="col-span-6 flex justify-between gap-4">
-                  <div class="w-1/4">
+               <div class="col-span-6 grid grid-cols-1 sm:grid-cols-4 gap-4">
+                  <div class="sm:col-span-1 col-span-4">
                   <label for="inception_date" class="block text-sm font-medium leading-6 text-gray-900">Inception Date</label>
                   <div class="mt-2">
                      <input type="date" name="inception_date" id="inception_date" value="{{ $client->inception_date }}"
                               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" readonly>
                   </div>
                   </div>
-                  <div class="w-1/4">
+                  <div class="sm:col-span-1 col-span-4">
                   <label for="expiry_date" class="block text-sm font-medium leading-6 text-gray-900">Expiry Date</label>
                   <div class="mt-2">
                      <input type="date" name="expiry_date" id="expiry_date" value="{{ $client->expiry_date }}"
                               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" readonly>
                   </div>
                   </div>
-                  <div class="w-1/4">
+                  <div class="sm:col-span-1 col-span-4">
                   <label for="renewal_date" class="block text-sm font-medium leading-6 text-gray-900">Renewal Date</label>
                   <div class="mt-2">
                      <input type="date" name="renewal_date" id="renewal_date" value="{{ $client->renewal_date }}"
                               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" readonly>
                   </div>
                   </div>
-                  <div class="w-1/4">
+                  <div class="sm:col-span-1 col-span-4">
                   <label for="reminder_date" class="block text-sm font-medium leading-6 text-gray-900">Reminder Date</label>
                   <div class="mt-2">
                      <input type="date" name="reminder_date" id="reminder_date" value="{{ $client->reminder_date }}"

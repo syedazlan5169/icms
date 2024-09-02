@@ -23,21 +23,21 @@
                   </div>
                   </div>
          
-                  <div class="sm:col-span-2">
+                  <div class="sm:col-span-2 col-span-1">
                   <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                   <div class="mt-2">
                      <input type="email" name="email" id="email" value="{{ $user->email }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
                   </div>
                   </div>
          
-                  <div class="col-span-2">
+                  <div class="sm:col-span-2 col-span-1">
                   <label for="password" class="block text-sm font-bold leading-6 text-red-500">Password (Set New)</label>
                   <div class="mt-2">
                      <input type="password" name="password" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                   </div>
                   </div>
             
-                  <div class="sm:col-span-2">
+                  <div class="sm:col-span-2 col-span-1">
                   <label for="is_admin" class="block text-sm font-medium leading-6 text-gray-900">Admin</label>
                   <div class="mt-2">
                      <select id="is_admin" name="is_admin" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -47,7 +47,7 @@
                   </div>
                   </div>
 
-                  <div class="sm:col-span-2">
+                  <div class="sm:col-span-2 col-span-1">
                      <fieldset>
                          <legend class="block text-sm font-medium leading-6 text-gray-900">Subscription Plan</legend>
                          <div class="mt-6 grid grid-cols-3 gap-6">
@@ -75,14 +75,14 @@
                      </fieldset>
                  </div>
                  
-                  <div class="col-span-2">
+                  <div class="sm:col-span-2 col-span-1">
                   <label for="subscription_start_date" class="block text-sm font-medium leading-6 text-gray-900">Subscription Start</label>
                   <div class="mt-2">
                      <input type="date" name="subscription_start_date" id="subscription_start_date" value="{{ $user->subscription_start_date }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
                   </div>
                   </div>
 
-                  <div class="col-span-2">
+                  <div class="sm:col-span-2 col-span-1">
                   <label for="subscription_end_date" class="block text-sm font-medium leading-6 text-gray-900">Subscription End</label>
                   <div class="mt-2">
                      <input type="date" name="subscription_end_date" id="subscription_end_date" value="{{ $user->subscription_end_date }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"  required>
