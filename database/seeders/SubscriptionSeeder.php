@@ -19,6 +19,7 @@ class SubscriptionSeeder extends Seeder
             'price' => 9999999,
             'description' => 'All features a available',
             'duration_in_days' => 9999,
+            'client_quota' => -1,
             'is_active' => true,
         ]);
         Subscription::create([
@@ -26,6 +27,7 @@ class SubscriptionSeeder extends Seeder
             'price' => 0,
             'description' => 'Trial plan with all features',
             'duration_in_days' => 7,
+            'client_quota' => -1,
             'is_active' => true,
         ]);
 
@@ -34,6 +36,7 @@ class SubscriptionSeeder extends Seeder
             'price' => 9.99,
             'description' => 'Basic plan with limited features',
             'duration_in_days' => 31,
+            'client_quota' => -1,
             'is_active' => true,
         ]);
 
@@ -42,6 +45,7 @@ class SubscriptionSeeder extends Seeder
             'price' => 19.99,
             'description' => 'Pro plan with additional features',
             'duration_in_days' => 31,
+            'client_quota' => -1,
             'is_active' => true,
         ]);
 
@@ -50,6 +54,7 @@ class SubscriptionSeeder extends Seeder
             'price' => 29.99,
             'description' => 'Premium plan with all features',
             'duration_in_days' => 31,
+            'client_quota' => -1,
             'is_active' => true,
         ]);
     }
