@@ -14,6 +14,8 @@
            <div class="space-y-12">
               <div class="border-b border-gray-900/10 pb-12">
                  <h2 class="text-xl font-semibold leading-7 text-gray-900">User Profile</h2>
+                 
+                 <!-- Ensuring grid adjusts to mobile view -->
                  <div 
                   class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"
                   x-data="{ selectedPlan: '', toAddDays: 0, calculatedDate: '' }" 
@@ -41,43 +43,49 @@
                         date.setDate(date.getDate() + parseInt(toAddDays));
                         calculatedDate = date.toISOString().split('T')[0];
                   })">
-                  <div class="sm:col-span-full">
-                  <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
-                  <div class="mt-2">
-                     <input type="text" name="name" id="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
-                  </div>
-                  </div>
-         
-                  <div class="sm:col-span-2">
-                  <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
-                  <div class="mt-2">
-                     <input type="email" name="email" id="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
-                  </div>
+
+                  <!-- Updated to span full width on mobile -->
+                  <div class="sm:col-span-full col-span-1">
+                     <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+                     <div class="mt-2">
+                        <input type="text" name="name" id="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
+                     </div>
                   </div>
          
-                  <div class="col-span-2">
-                  <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                  <div class="mt-2">
-                     <input type="password" name="password" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
+                  <!-- Updated to span full width on mobile -->
+                  <div class="sm:col-span-2 col-span-1">
+                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+                     <div class="mt-2">
+                        <input type="email" name="email" id="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
+                     </div>
                   </div>
+         
+                  <!-- Updated to span full width on mobile -->
+                  <div class="sm:col-span-2 col-span-1">
+                     <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                     <div class="mt-2">
+                        <input type="password" name="password" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required>
+                     </div>
                   </div>
             
-                  <div class="sm:col-span-2">
-                  <label for="is_admin" class="block text-sm font-medium leading-6 text-gray-900">Admin</label>
-                  <div class="mt-2">
-                     <select id="is_admin" name="is_admin" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        <option value="1">Yes</option>
-                        <option value="0" selected>No</option>
-                     </select>
-                  </div>
+                  <!-- Updated to span full width on mobile -->
+                  <div class="sm:col-span-2 col-span-1">
+                     <label for="is_admin" class="block text-sm font-medium leading-6 text-gray-900">Admin</label>
+                     <div class="mt-2">
+                        <select id="is_admin" name="is_admin" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                           <option value="1">Yes</option>
+                           <option value="0" selected>No</option>
+                        </select>
+                     </div>
                   </div>
 
-                  <div class="sm:col-span-2">
+                  <!-- Ensure the radio buttons layout adapts to mobile view -->
+                  <div class="sm:col-span-2 col-span-1">
                      <fieldset>
                          <legend class="block text-sm font-medium leading-6 text-gray-900">Subscription Plan</legend>
-                         <div class="mt-6 grid grid-cols-3 gap-6">
+                         <div class="mt-6 grid sm:grid-cols-3 grid-cols-3 gap-6">
                              <div class="flex items-center">
-                                 <input id="admin" name="subscription_id" value="1" type="radio" checked class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" x-model="selectedPlan" checked>
+                                 <input id="admin" name="subscription_id" value="1" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" x-model="selectedPlan" checked>
                                  <label for="admin" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Admin</label>
                              </div>
                              <div class="flex items-center">
@@ -100,18 +108,20 @@
                      </fieldset>
                  </div>
                  
-                  <div class="col-span-2">
-                  <label for="subscription_start_date" class="block text-sm font-medium leading-6 text-gray-900">Subscription Start</label>
-                  <div class="mt-2">
-                     <input type="date" name="subscription_start_date" id="subscription_start_date" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" required readonly>
-                  </div>
+                  <!-- Updated to span full width on mobile -->
+                  <div class="sm:col-span-2 col-span-1">
+                     <label for="subscription_start_date" class="block text-sm font-medium leading-6 text-gray-900">Subscription Start</label>
+                     <div class="mt-2">
+                        <input type="date" name="subscription_start_date" id="subscription_start_date" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" required readonly>
+                     </div>
                   </div>
 
-                  <div class="col-span-2">
-                  <label for="subscription_end_date" class="block text-sm font-medium leading-6 text-gray-900">Subscription End</label>
-                  <div class="mt-2">
-                     <input type="date" name="subscription_end_date" id="subscription_end_date" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" :value="calculatedDate" required>
-                  </div>
+                  <!-- Updated to span full width on mobile -->
+                  <div class="sm:col-span-2 col-span-1">
+                     <label for="subscription_end_date" class="block text-sm font-medium leading-6 text-gray-900">Subscription End</label>
+                     <div class="mt-2">
+                        <input type="date" name="subscription_end_date" id="subscription_end_date" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" :value="calculatedDate" required>
+                     </div>
                   </div>
            
               </div>
