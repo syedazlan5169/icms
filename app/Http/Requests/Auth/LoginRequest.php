@@ -50,7 +50,7 @@ class LoginRequest extends FormRequest
             ]);
         }
 
-        Artisan::call('status:update');
+        //Artisan::call('status:update');
 
         RateLimiter::clear($this->throttleKey());
     }
