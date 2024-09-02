@@ -135,9 +135,8 @@
                @endif
                </div> 
            <div class="mt-6 flex items-center justify-end gap-x-6">
-           <x-primary-button type="submit">Save</x-primary-button> 
+               <x-primary-button type="submit">Save</x-primary-button> 
            </div>
-     
         </div>
      </form>
 </x-app-layout>
