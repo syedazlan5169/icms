@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Artisan;
 
 class LoginRequest extends FormRequest
 {
@@ -48,6 +49,8 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ]);
         }
+
+        Artisan::call('status:update');
 
         RateLimiter::clear($this->throttleKey());
     }
