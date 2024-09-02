@@ -229,10 +229,11 @@
                @endif
            </p>
          </div>
+         <div class="px-6 py-4">
          <div class="mt-6 flex items-center justify-end gap-x-6">
             <x-primary-button type="submit">Save</x-primary-button> 
          </div>
-   
+         </div>
       </div>
    </form>
  
