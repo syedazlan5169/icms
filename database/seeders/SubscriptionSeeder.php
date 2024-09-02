@@ -36,7 +36,7 @@ class SubscriptionSeeder extends Seeder
             'price' => 9.99,
             'description' => 'Basic plan with limited features',
             'duration_in_days' => 31,
-            'client_quota' => -1,
+            'client_quota' => 20,
             'is_active' => true,
         ]);
 
@@ -45,7 +45,7 @@ class SubscriptionSeeder extends Seeder
             'price' => 19.99,
             'description' => 'Pro plan with additional features',
             'duration_in_days' => 31,
-            'client_quota' => -1,
+            'client_quota' => 50,
             'is_active' => true,
         ]);
 

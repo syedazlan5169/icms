@@ -18,7 +18,7 @@ return new class extends Migration
             $table->double('price');
             $table->text('description');
             $table->integer('duration_in_days');
-            $table->integer('client_qouta');
+            $table->integer('client_quota')->default(-1);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
