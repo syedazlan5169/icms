@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ToyyibpayController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminAccess;
 use App\Http\Middleware\ShareUserData;
@@ -34,6 +35,12 @@ Route::middleware(['auth','verified', ShareUserData::class])->group(function () 
     Route::get('/client/{id}', [ClientController::class, 'show'])->name('client.show');
     Route::patch('/client/{id}',[ClientController::class, 'patch']);
     Route::delete('/client/{id}', [ClientController::class,'destroy']);
+
+    //ToyyibpayController
+    Route::get('toyyibpay', [ToyyibpayController::class, 'createBill'])->name('toyyibpay-create');
+    Route::get('toyyibpay-status', [ToyyibpayController::class, 'paymentStatus'])->name('toyyibpay-status');
+    Route::post('toyyibpay-callback', [ToyyibpayController::class, 'callback'])->name('toyyibpay-callback');
+
 
     Route::get('/auth/google/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
     Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
