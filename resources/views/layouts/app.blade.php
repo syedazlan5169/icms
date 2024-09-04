@@ -142,7 +142,7 @@
                   <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-                       :href="route('logout')"
+                        href="route('logout')"
                         onclick="event.preventDefault();
                                 this.closest('form').submit();">
                         {{ __('Log Out') }}
@@ -159,7 +159,7 @@
               <div>
                 <h1 class="font-semibold text-2xl text-gray-800 leading-tight">{{ $heading }}</h1>
               </div>
-              <div>
+              <div class="hidden sm:block">
                 @php
                     use Carbon\Carbon;
                     $endDate = Carbon::parse($loggedInUser->subscription_end_date);

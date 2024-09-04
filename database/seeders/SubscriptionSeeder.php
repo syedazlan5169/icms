@@ -33,7 +33,7 @@ class SubscriptionSeeder extends Seeder
 
         Subscription::create([
             'name' => 'Basic',
-            'price' => 9.99,
+            'price' => 39,
             'description' => 'Basic plan with limited features',
             'duration_in_days' => 31,
             'client_quota' => 20,
@@ -42,7 +42,7 @@ class SubscriptionSeeder extends Seeder
 
         Subscription::create([
             'name' => 'Pro',
-            'price' => 19.99,
+            'price' => 49,
             'description' => 'Pro plan with additional features',
             'duration_in_days' => 31,
             'client_quota' => 50,
@@ -51,7 +51,7 @@ class SubscriptionSeeder extends Seeder
 
         Subscription::create([
             'name' => 'Premium',
-            'price' => 29.99,
+            'price' => 69,
             'description' => 'Premium plan with all features',
             'duration_in_days' => 31,
             'client_quota' => -1,

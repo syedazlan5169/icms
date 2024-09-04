@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\DashboardController;
@@ -37,11 +38,16 @@ Route::middleware(['auth','verified', ShareUserData::class])->group(function () 
     Route::delete('/client/{id}', [ClientController::class,'destroy']);
 
     //ToyyibpayController
-    Route::get('toyyibpay', [ToyyibpayController::class, 'createBill'])->name('toyyibpay-create');
-    Route::get('toyyibpay-status', [ToyyibpayController::class, 'paymentStatus'])->name('toyyibpay-status');
-    Route::post('toyyibpay-callback', [ToyyibpayController::class, 'callback'])->name('toyyibpay-callback');
+    Route::get('renew/{id}', [ToyyibpayController::class, 'renewSubscription'])->name('renewSubscription');
+    Route::get('toyyibpay-redirect', [ToyyibpayController::class, 'handleToyyibpayRedirect'])->name('toyyibpay-redirect');
+    Route::post('toyyibpay-callback', [ToyyibpayController::class, 'handleToyyibpayCallback'])->name('toyyibpay-callback');
 
+    //Manage Subscription
+    Route::get('/manage-subscription', [SubscriptionController::class,'manageSubscription'])->name('manage-subscription');
 
+    //Thank You page
+    Route::get('/thankyou', [ToyyibpayController::class,'handleToyyibpayRedirect'])->name('thankyou');
+        
     Route::get('/auth/google/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
     Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 });

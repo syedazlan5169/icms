@@ -20,7 +20,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'is_admin' => 1,
             'subscription_id' => 1,
-            'subscription_end_date' => now()->addDay(999)
+            'subscription_start_date' => now(),
+            'subscription_end_date' => now()->addDays(999)
         ]);
 
         User::create([
@@ -29,7 +30,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'is_admin' => 0,
             'subscription_id' => 3,
-            'subscription_end_date' => now()->addDay(31)
+            'subscription_start_date' => now(),
+            'subscription_end_date' => now()->addDays(31)
         ]);
 
         User::create([
@@ -38,7 +40,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'is_admin' => 0,
             'subscription_id' => 4,
-            'subscription_end_date' => now()->addDay(31)
+            'subscription_start_date' => now(),
+            'subscription_end_date' => now()->addDays(31)
         ]);
 
         User::create([
@@ -47,7 +50,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'is_admin' => 0,
             'subscription_id' => 5,
-            'subscription_end_date' => now()->addDay(31)
+            'subscription_start_date' => now(),
+            'subscription_end_date' => now()->addDays(31)
         ]);
     }
 }
