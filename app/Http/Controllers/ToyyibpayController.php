@@ -30,7 +30,7 @@ class ToyyibpayController extends Controller
             'billPriceSetting'=>1,
             'billPayorInfo'=>1,
             'billAmount'=> $price,
-            'billReturnUrl'=> route('toyyibpay-redirect'),
+            'billReturnUrl'=> route('payment-status'),
             'billCallbackUrl'=> route('toyyibpay-callback'),
             'billExternalReferenceNo' => $orderNumber,
             'billTo'=> Auth::user()->name,
@@ -67,7 +67,7 @@ class ToyyibpayController extends Controller
         $billcode = $request->query('billcode');
         $orderId = $request->query('order_id');
         
-        return view('thankyou', compact('statusId', 'billcode', 'orderId'));
+        return view('payment-status', compact('statusId', 'billcode', 'orderId'));
     }
 
     public function handleToyyibpayCallback()

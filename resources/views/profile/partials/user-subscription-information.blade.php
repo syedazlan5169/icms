@@ -43,8 +43,8 @@
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>   
 
-        <div class="flex items-center gap-4">
-            <x-primary-button  type="submit" form="renew-form">{{ __('Renew') }}</x-primary-button>
+        <div x-data="{ plan: {{ $user->subscription_id }} }"class="flex items-center gap-4">
+            <x-primary-button  type="submit" form="renew-form" x-show="plan == 3 || plan == 4 || plan == 5">{{ __('Renew') }}</x-primary-button>
             <x-primary-button class="bg-green-600">{{ __('Upgrade') }}</x-primary-button>
         </div>
     </form>
