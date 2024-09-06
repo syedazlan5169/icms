@@ -39,6 +39,7 @@ Route::middleware(['auth','verified', ShareUserData::class])->group(function () 
 
     //ToyyibpayController
     Route::get('renew/{id}', [ToyyibpayController::class, 'renewSubscription'])->name('renewSubscription');
+    Route::get('change/{id}', [ToyyibpayController::class, 'changeSubscription'])->name('changeSubscription');
     Route::get('payment-status', [ToyyibpayController::class, 'handleToyyibpayRedirect'])->name('payment-status');
     Route::post('toyyibpay-callback', [ToyyibpayController::class, 'handleToyyibpayCallback'])->name('toyyibpay-callback');
 

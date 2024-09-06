@@ -57,9 +57,50 @@ class ToyyibpayController extends Controller
         }
 
     }
-    public function changeSubcription()
+    public function changeSubscription($id)
     {
+        $subscription =  Subscription::findOrFail($id);
 
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $price = 100 * $subscription->price;
+        $orderNumber = 'SY-' . strtoupper(Str::random(10));
+
+        $bill = [
+            'userSecretKey'=> config('services.toyyibpay.secretKey'),
+            'categoryCode'=> config('services.toyyibpay.category'),
+            'billName'=> $subscription->name,
+            'billDescription'=> $subscription->description,
+            'billPriceSetting'=>1,
+            'billPayorInfo'=>1,
+            'billAmount'=> $price,
+            'billReturnUrl'=> route('payment-status'),
+            'billCallbackUrl'=> route('toyyibpay-callback'),
+            'billExternalReferenceNo' => $orderNumber,
+            'billTo'=> Auth::user()->name,
+            'billEmail'=> Auth::user()->email,
+            'billPhone'=> Auth::user()->phone,
+            'billSplitPayment'=>0,
+            'billSplitPaymentArgs'=>'',
+            'billPaymentChannel'=>'0',
+            'billContentEmail'=>'Thank you for purchasing our product!',
+            'billExpiryDate'=>'17-12-2024 17:00:00',
+            'billExpiryDays'=>3    
+        ];
+        //dd($bill);
+
+        $url = 'https://dev.toyyibpay.com/index.php/api/createBill';
+        $response = Http::asForm()->post($url, $bill);
+
+        if ($response->successful() && isset($response[0]['BillCode'])) {
+            $billCode = $response[0]['BillCode'];
+            return redirect()->away('https://dev.toyyibpay.com/' . $billCode);
+        } else {
+            Log::error('ToyyibPay API Error: ' . $response->body());
+            return redirect()->back()->withErrors('Failed to create bill. Please try again.');
+        }
     }
     public function handleToyyibpayRedirect(Request $request)
     {
