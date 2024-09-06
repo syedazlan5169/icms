@@ -24,13 +24,15 @@ class UserController extends Controller
     {
         request()->validate([
             'name' => ['required'],
-            'email' => ['required'],
+            'phone' => ['required','numeric'],
+            'email' => ['required', 'email'],
             'password' => ['required'],
             'is_admin' => ['required'],
             'subscription_id' => ['required']
         ]);
             User::create([
                 'name'=> request('name'),
+                'phone'=> request('phone'),
                 'email'=> request('email'),
                 'is_admin'=> request('is_admin'),
                 'subscription_id'=> request('subscription_id'),
@@ -45,12 +47,14 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         request()->validate([
             'name' => ['required'],
-            'email' => ['required'],
+            'phone' => ['required', 'numeric'],
+            'email' => ['required', 'email'],
             'is_admin' => ['required'],
             'subscription_id' => ['required'],
         ]);
             $user->update([
                 'name'=> request('name'),
+                'phone'=> request('phone'),
                 'email'=> request('email'),
                 'is_admin'=> request('is_admin'),
                 'subscription_id'=> request('subscription_id'),

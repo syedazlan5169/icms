@@ -9,7 +9,8 @@
         </p>
     </header>
 
-    <form method="GET" action="{{ route('manage-subscription') }}" class="mt-6 space-y-6">
+    <form method="POST" action="{{ route('manage-subscription') }}" class="mt-6 space-y-6">
+        @csrf
 
         <div x-data="{ subscription_id: {{ $user->subscription_id }}, subscription_name: '' }" x-init="
             subscription_name = (() => {

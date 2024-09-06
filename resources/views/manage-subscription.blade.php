@@ -12,22 +12,20 @@
           <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Pricing plans for&nbsp;all&nbsp;need</p>
         </div>
         <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">Choose an affordable plan that’s packed with the best features that suite&nbsp;your&nbsp;need.</p>
-        <div class="mt-16 flex justify-center">
+        <!--<div class="mt-16 flex justify-center">
           <fieldset aria-label="Payment frequency">
             <div x-data="{ monthly: true, yearly: false }" class="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200">
-              <!-- Checked: "bg-indigo-600 text-white", Not Checked: "text-gray-500" -->
               <label class="cursor-pointer rounded-full px-2.5 py-1" :class="{ 'bg-indigo-600 text-white': monthly, 'text-gray-500': !monthly}">
                 <input type="radio" name="frequency" value="monthly" class="sr-only" @click="monthly = !monthly; yearly = !yearly">
                 <span>Monthly</span>
               </label>
-              <!-- Checked: "bg-indigo-600 text-white", Not Checked: "text-gray-500" -->
               <label class="cursor-pointer rounded-full px-2.5 py-1" :class="{ 'bg-indigo-600 text-white': yearly, 'text-gray-500': !yearly}">
                 <input type="radio" name="frequency" value="annually" class="sr-only" @click="monthly = !monthly; yearly = !yearly">
                 <span>Annually</span>
               </label>
             </div>
           </fieldset>
-        </div>
+        </div>-->
         <div x-data="{ currentPlan: {{ $loggedInUser->subscription_id }}}" class="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 md:max-w-2xl md:grid-cols-2 lg:max-w-4xl xl:mx-0 xl:max-w-none xl:grid-cols-4">
           <div class="rounded-3xl p-8 ring-1 ring-gray-200" :class="{ 'ring-indigo-600 ring-2': currentPlan == 2}">
             <h2 id="tier-hobby" class="text-lg font-semibold leading-8 text-gray-900" :class="{ 'text-indigo-600': currentPlan == 2}">{{ $subscriptions->where('id',2)->first()->toArray()['name'] }}</h2>
@@ -66,7 +64,7 @@
               <!-- Payment frequency, update based on frequency toggle state -->
               <span class="text-sm font-semibold leading-6 text-gray-600">/month</span>
             </p>
-            <a href="change/3" aria-describedby="tier-freelancer" class="mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:bg-indigo-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" x-text="(currentPlan == 3) ? 'Renew' : 'Choose Plan'"></a>
+            <a href="change/3" aria-describedby="tier-freelancer" class="mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:bg-indigo-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" x-text="(currentPlan == 3) ? 'Renew Current Plan' : 'Choose Plan'"></a>
             <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-600">
               <li class="flex gap-x-3">
                 <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -103,7 +101,7 @@
               <!-- Payment frequency, update based on frequency toggle state -->
               <span class="text-sm font-semibold leading-6 text-gray-600">/month</span>
             </p>
-            <a href="/change/4" aria-describedby="tier-startup" class="mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:bg-indigo-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" x-text="(currentPlan == 4) ? 'Renew' : 'Choose Plan'"></a>
+            <a href="/change/4" aria-describedby="tier-startup" class="mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:bg-indigo-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" x-text="(currentPlan == 4) ? 'Renew Current Plan' : 'Choose Plan'"></a>
             <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-600">
               <li class="flex gap-x-3">
                 <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -146,7 +144,7 @@
               <!-- Payment frequency, update based on frequency toggle state -->
               <span class="text-sm font-semibold leading-6 text-gray-600">/month</span>
             </p>
-            <a href="/change/5" aria-describedby="tier-enterprise" class="mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:bg-indigo-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" x-text="(currentPlan == 5) ? 'Renew' : 'Choose Plan'"></a>
+            <a href="/change/5" aria-describedby="tier-enterprise" class="mt-6 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:bg-indigo-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" x-text="(currentPlan == 5) ? 'Renew Current Plan' : 'Choose Plan'"></a>
             <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-600">
               <li class="flex gap-x-3">
                 <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

@@ -20,20 +20,4 @@ class SubscriptionController extends Controller
         
         return view('manage-subscription', ['subscriptions'=> $subscriptions]);
     }
-    public function renew($id)
-    {
-        $subscription = Subscription::where('id', $id)->first();
-
-        $price = 100 * $subscription->price;
-        $userBill = [
-            'billName'=> $subscription->name,
-            'billDescription'=> $subscription->description,
-            'billAmount'=>$price,
-            'billTo'=>Auth::user()->name,
-            'billEmail'=>Auth::user()->email,
-            'billPhone'=>Auth::user()->phone,
-        ];
-
-        return redirect()->route('toyyibpay-create', ['userBill' => $userBill]);
-    }
 }

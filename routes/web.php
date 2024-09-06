@@ -44,7 +44,7 @@ Route::middleware(['auth','verified', ShareUserData::class])->group(function () 
     Route::post('toyyibpay-callback', [ToyyibpayController::class, 'handleToyyibpayCallback'])->name('toyyibpay-callback');
 
     //Manage Subscription
-    Route::get('/manage-subscription', [SubscriptionController::class,'manageSubscription'])->name('manage-subscription');
+    Route::post('/manage-subscription', [SubscriptionController::class,'manageSubscription'])->name('manage-subscription');
 
     Route::get('/auth/google/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
     Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
