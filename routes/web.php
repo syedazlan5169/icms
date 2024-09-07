@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminAccess;
 use App\Http\Middleware\ShareUserData;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,7 +42,6 @@ Route::middleware(['auth','verified', ShareUserData::class])->group(function () 
     Route::get('renew/{id}', [ToyyibpayController::class, 'renewSubscription'])->name('renewSubscription');
     Route::get('change/{id}', [ToyyibpayController::class, 'changeSubscription'])->name('changeSubscription');
     Route::get('payment-status', [ToyyibpayController::class, 'handleToyyibpayRedirect'])->name('payment-status');
-    Route::post('toyyibpay-callback', [ToyyibpayController::class, 'handleToyyibpayCallback'])->name('toyyibpay-callback');
 
     //Manage Subscription
     Route::post('/manage-subscription', [SubscriptionController::class,'manageSubscription'])->name('manage-subscription');
@@ -61,10 +61,17 @@ Route::middleware(['auth','verified', ShareUserData::class, AdminAccess::class])
     Route::delete('/user/{id}', [UserController::class, 'destroy']);
 });
 
+
+Route::post('toyyibpay-callback', [ToyyibpayController::class, 'handleToyyibpayCallback'])->name('toyyibpay-callback');
+
 route::get('testview', function () {
     $user = (Auth::user());
     dd($user->name, $user->email);
 });
 
+Route::get('/test-log', function () {
+    Log::info('This is a test log');
+    return 'Check the log file';
+});
 
 require __DIR__.'/auth.php';

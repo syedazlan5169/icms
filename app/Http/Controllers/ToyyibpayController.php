@@ -31,7 +31,7 @@ class ToyyibpayController extends Controller
             'billPayorInfo'=>1,
             'billAmount'=> $price,
             'billReturnUrl'=> route('payment-status'),
-            'billCallbackUrl'=> route('toyyibpay-callback'),
+            'billCallbackUrl'=> 'https://efdc-110-159-244-222.ngrok-free.app/toyyibpay-callback',
             'billExternalReferenceNo' => $orderNumber,
             'billTo'=> Auth::user()->name,
             'billEmail'=> Auth::user()->email,
@@ -77,7 +77,7 @@ class ToyyibpayController extends Controller
             'billPayorInfo'=>1,
             'billAmount'=> $price,
             'billReturnUrl'=> route('payment-status'),
-            'billCallbackUrl'=> route('toyyibpay-callback'),
+            'billCallbackUrl'=> 'https://efdc-110-159-244-222.ngrok-free.app/toyyibpay-callback',
             'billExternalReferenceNo' => $orderNumber,
             'billTo'=> Auth::user()->name,
             'billEmail'=> Auth::user()->email,
@@ -113,8 +113,14 @@ class ToyyibpayController extends Controller
 
     public function handleToyyibpayCallback(Request $request)
     {
-        $response = $request()->all(['refno', 'status', 'reason', 'billcode', 'order_id', 'amount', 'transaction_time']);
-        Log::info($response);
+        $response = $request->only(['refno', 'status', 'reason', 'billcode', 'order_id', 'amount', 'transaction_time']);
+        $user = Auth::user();
+        Log::info($response['reason']);
+            if ($user) {
+        Log::info('User Name: ' . $user->name);
+        } else {
+            Log::warning('User not authenticated during Toyyibpay callback');
+        }
     }
 
 }
