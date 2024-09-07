@@ -52,23 +52,23 @@ class UserController extends Controller
             'is_admin' => ['required'],
             'subscription_id' => ['required'],
         ]);
-            $user->update([
-                'name'=> request('name'),
-                'phone'=> request('phone'),
-                'email'=> request('email'),
-                'is_admin'=> request('is_admin'),
-                'subscription_id'=> request('subscription_id'),
-                'subscription_start_date'=> request('subscription_start_date'),
-                'subscription_end_date'=> request('subscription_end_date')
-            ]);
+        $user->update([
+            'name'=> request('name'),
+            'phone'=> request('phone'),
+            'email'=> request('email'),
+            'is_admin'=> request('is_admin'),
+            'subscription_id'=> request('subscription_id'),
+            'subscription_start_date'=> request('subscription_start_date'),
+            'subscription_end_date'=> request('subscription_end_date')
+        ]);
 
-            if (!empty(request('password')))
-            {
-                $user->update(['password' => Hash::make(request('password'))]);
-            }
-        
-            Artisan::call('status:update');
-            return redirect()->route('user.show', ['id' => $user->id])->with('success', 'User updated successfully');
+        if (!empty(request('password')))
+        {
+            $user->update(['password' => Hash::make(request('password'))]);
+        }
+    
+        Artisan::call('status:update');
+        return redirect()->route('user.show', ['id' => $user->id])->with('success', 'User updated successfully');
 
     }
     public function show($id)

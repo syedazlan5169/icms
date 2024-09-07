@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\App\Models\Subscription::class);
-            $table->string('refno');
-            $table->string('status');
-            $table->string('reason');
-            $table->string('billcode');
+            $table->string('refno')->nullable();
+            $table->string('status')->nullable();
+            $table->string('reason')->nullable();
+            $table->string('billcode')->nullable();
             $table->string('order_id');
-            $table->string('amount');
-            $table->string('transaction_time');
+            $table->string('amount')->nullable();
+            $table->string('transaction_time')->nullable();
             $table->timestamps();
         });
     }

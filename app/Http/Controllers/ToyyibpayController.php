@@ -8,9 +8,20 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Models\Order;
+use App\Models\User;
+use Illuminate\Support\Carbon;
 
 class ToyyibpayController extends Controller
 {
+    public function createOrder($orderId, $subscriptionID)
+    {
+        Order::create([
+            'user_id'=> Auth::user()->id,
+            'subscription_id' => $subscriptionID,
+            'order_id' => $orderId,
+        ]);
+    }
     public function renewSubscription($id)
     {
         $subscription =  Subscription::findOrFail($id);
@@ -31,7 +42,7 @@ class ToyyibpayController extends Controller
             'billPayorInfo'=>1,
             'billAmount'=> $price,
             'billReturnUrl'=> route('payment-status'),
-            'billCallbackUrl'=> 'https://efdc-110-159-244-222.ngrok-free.app/toyyibpay-callback',
+            'billCallbackUrl'=> 'https://present-hedgehog-needlessly.ngrok-free.app/toyyibpay-callback',
             'billExternalReferenceNo' => $orderNumber,
             'billTo'=> Auth::user()->name,
             'billEmail'=> Auth::user()->email,
@@ -43,7 +54,8 @@ class ToyyibpayController extends Controller
             'billExpiryDate'=>'17-12-2024 17:00:00',
             'billExpiryDays'=>3    
         ];
-        //dd($bill);
+
+        $this->createOrder($orderNumber, $id);
 
         $url = 'https://dev.toyyibpay.com/index.php/api/createBill';
         $response = Http::asForm()->post($url, $bill);
@@ -77,7 +89,7 @@ class ToyyibpayController extends Controller
             'billPayorInfo'=>1,
             'billAmount'=> $price,
             'billReturnUrl'=> route('payment-status'),
-            'billCallbackUrl'=> 'https://efdc-110-159-244-222.ngrok-free.app/toyyibpay-callback',
+            'billCallbackUrl'=> 'https://present-hedgehog-needlessly.ngrok-free.app/toyyibpay-callback',
             'billExternalReferenceNo' => $orderNumber,
             'billTo'=> Auth::user()->name,
             'billEmail'=> Auth::user()->email,
@@ -89,7 +101,8 @@ class ToyyibpayController extends Controller
             'billExpiryDate'=>'17-12-2024 17:00:00',
             'billExpiryDays'=>3    
         ];
-        //dd($bill);
+
+        $this->createOrder($orderNumber, $id);
 
         $url = 'https://dev.toyyibpay.com/index.php/api/createBill';
         $response = Http::asForm()->post($url, $bill);
@@ -114,13 +127,37 @@ class ToyyibpayController extends Controller
     public function handleToyyibpayCallback(Request $request)
     {
         $response = $request->only(['refno', 'status', 'reason', 'billcode', 'order_id', 'amount', 'transaction_time']);
-        $user = Auth::user();
-        Log::info($response['reason']);
-            if ($user) {
-        Log::info('User Name: ' . $user->name);
+
+        $order = Order::where('order_id', $response['order_id'])->first();
+        $user = User::findOrFail($order->user_id);
+        $subscription = Subscription::findOrFail($order->subscription_id);
+        $currentEndDate = $user->subscription_end_date ? Carbon::parse($user->subscription_end_date) : Carbon::now();
+        $newEndDate = $currentEndDate->addDays($subscription->duration_in_days);
+
+        //Log::info($order);
+        //Log::info($user);
+        //Log::info($subscription);
+
+        $order->update([
+            'refno' => $response['refno'],
+            'status' => $response['status'],
+            'reason' => $response['reason'],
+            'billcode' => $response['billcode'],
+            'amount' => $response['amount'],
+            'transaction_time' => $response['transaction_time'],
+        ]);
+
+        if ($response['status'] === '1') {
+            $user->update([
+                'subscription_id' => $subscription->id,
+                'subscription_end_date' => $newEndDate,
+            ]);
+
+            Log::info('User subscription updated successfully.', ['user_id' => $user->id, 'subscription_id' => $subscription->id]);
         } else {
-            Log::warning('User not authenticated during Toyyibpay callback');
+            Log::warning('Payment was unsuccessful.', ['order_id' => $response['order_id'], 'status' => $response['status']]);
         }
+
     }
 
 }
