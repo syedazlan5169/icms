@@ -111,9 +111,9 @@ class ToyyibpayController extends Controller
         return view('payment-status', compact('statusId', 'billcode', 'orderId'));
     }
 
-    public function handleToyyibpayCallback()
+    public function handleToyyibpayCallback(Request $request)
     {
-        $response = request()->all(['refno', 'status', 'reason', 'billcode', 'order_id', 'amount', 'transaction_time']);
+        $response = $request()->all(['refno', 'status', 'reason', 'billcode', 'order_id', 'amount', 'transaction_time']);
         Log::info($response);
     }
 
