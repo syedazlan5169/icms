@@ -127,37 +127,49 @@ class ToyyibpayController extends Controller
     public function handleToyyibpayCallback(Request $request)
     {
         $response = $request->only(['refno', 'status', 'reason', 'billcode', 'order_id', 'amount', 'transaction_time']);
-
-        $order = Order::where('order_id', $response['order_id'])->first();
+        
+        $order = Order::where('order_id', $response['order_id'])->firstOrFail();
         $user = User::findOrFail($order->user_id);
-        $subscription = Subscription::findOrFail($order->subscription_id);
+        $currentSubscription = Subscription::findOrFail($user->subscription_id);
+        $newSubscription = Subscription::findOrFail($order->subscription_id);
+        
+
         $currentEndDate = $user->subscription_end_date ? Carbon::parse($user->subscription_end_date) : Carbon::now();
-        $newEndDate = $currentEndDate->addDays($subscription->duration_in_days);
-
-        //Log::info($order);
-        //Log::info($user);
-        //Log::info($subscription);
-
-        $order->update([
-            'refno' => $response['refno'],
-            'status' => $response['status'],
-            'reason' => $response['reason'],
-            'billcode' => $response['billcode'],
-            'amount' => $response['amount'],
-            'transaction_time' => $response['transaction_time'],
-        ]);
 
         if ($response['status'] === '1') {
+            if ($order->subscription_id > $user->subscription_id)
+            {
+                $convertedDays = Subscription::calculateUpgradeDays($user, $currentSubscription, $newSubscription);
+                $newEndDate = now()->addDays($convertedDays + $newSubscription->duration_in_days);
+            }
+            else if ($order->subscription_id < $user->subscription_id)
+            {
+                $convertedDays = Subscription::calculateDowngradeDays($user, $currentSubscription, $newSubscription);
+                $newEndDate = now()->addDays($convertedDays + $newSubscription->duration_in_days);
+            }
+            else
+            {
+                $newEndDate = $currentEndDate->addDays($newSubscription->duration_in_days);
+            }
+
             $user->update([
-                'subscription_id' => $subscription->id,
+                'subscription_id' => $newSubscription->id,
                 'subscription_end_date' => $newEndDate,
             ]);
 
-            Log::info('User subscription updated successfully.', ['user_id' => $user->id, 'subscription_id' => $subscription->id]);
+            Log::info('User subscription updated successfully.', [
+                'user_id' => $user->id, 
+                'subscription_id' => $newSubscription->id
+            ]);
         } else {
-            Log::warning('Payment was unsuccessful.', ['order_id' => $response['order_id'], 'status' => $response['status']]);
+            Log::warning('Payment was unsuccessful.', [
+                'order_id' => $response['order_id'], 
+                'status' => $response['status']
+            ]);
         }
 
+        $order->update($response);
     }
+
 
 }
