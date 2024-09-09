@@ -133,24 +133,10 @@ class ToyyibpayController extends Controller
         $currentSubscription = Subscription::findOrFail($user->subscription_id);
         $newSubscription = Subscription::findOrFail($order->subscription_id);
         
-
-        $currentEndDate = $user->subscription_end_date ? Carbon::parse($user->subscription_end_date) : Carbon::now();
-
         if ($response['status'] === '1') {
-            if ($order->subscription_id > $user->subscription_id)
-            {
-                $convertedDays = Subscription::calculateUpgradeDays($user, $currentSubscription, $newSubscription);
-                $newEndDate = now()->addDays($convertedDays + $newSubscription->duration_in_days);
-            }
-            else if ($order->subscription_id < $user->subscription_id)
-            {
-                $convertedDays = Subscription::calculateDowngradeDays($user, $currentSubscription, $newSubscription);
-                $newEndDate = now()->addDays($convertedDays + $newSubscription->duration_in_days);
-            }
-            else
-            {
-                $newEndDate = $currentEndDate->addDays($newSubscription->duration_in_days);
-            }
+                
+            $convertedDays = Subscription::calculateConvertedDays($user, $currentSubscription, $newSubscription);
+            $newEndDate = now()->addDays($convertedDays + $newSubscription->duration_in_days);
 
             $user->update([
                 'subscription_id' => $newSubscription->id,
@@ -161,7 +147,8 @@ class ToyyibpayController extends Controller
                 'user_id' => $user->id, 
                 'subscription_id' => $newSubscription->id
             ]);
-        } else {
+        }
+        else {
             Log::warning('Payment was unsuccessful.', [
                 'order_id' => $response['order_id'], 
                 'status' => $response['status']

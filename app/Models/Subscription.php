@@ -13,7 +13,7 @@ class Subscription extends Model
 
     protected $guarded = [];
 
-    public static function calculateUpgradeDays(User $user, Subscription $currentSubscription, Subscription $newSubscription)
+    public static function calculateConvertedDays(User $user, Subscription $currentSubscription, Subscription $newSubscription)
     {
         $remainingDays = now()->diffInDays($user->subscription_end_date, false);
 
@@ -23,18 +23,6 @@ class Subscription extends Model
 
         return $days;
     }
-
-    public static function calculateDowngradeDays(User $user, Subscription $currentSubscription, Subscription $newSubscription)
-    {
-        $remainingDays = now()->diffInDays($user->subscription_end_date, false);
-
-        $days = ceil(($remainingDays * $currentSubscription->time_value) / $newSubscription->time_value);
-
-        Log::info($days);
-
-        return $days;
-    }
-
 
     public function user()
     {
