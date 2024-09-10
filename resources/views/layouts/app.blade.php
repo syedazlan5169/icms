@@ -13,7 +13,7 @@
 
         <!-- Scripts -->
         @vite('resources/css/app.css')
-        @livewireStyles
+        @livewireStyles()
 
     </head>
     <body class="h-full">
@@ -183,6 +183,6 @@
             </div>
           </main>
         </div>
-        @livewireScripts
+        @livewireScripts()
     </body>
 </html>
