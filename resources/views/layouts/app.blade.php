@@ -56,7 +56,7 @@
                       </div>
 
                       <!-- Dropdown menu, show/hide based on menu state. -->
-                      <div x-show="open" 
+                      <div x-cloak x-show="open" 
                           @click.outside="open = false" 
                           x-transition:enter="transition ease-out duration-100" 
                           x-transition:enter-start="transform opacity-0 scale-95" 
@@ -105,7 +105,7 @@
             </div>
         
             <!-- Mobile menu, show/hide based on menu state. -->
-            <div x-show="mobileMenu" 
+            <div x-cloak x-show="mobileMenu" 
               @click.outside="mobileMenu = false" 
               x-transition:enter="transition ease-out duration-100" 
               x-transition:enter-start="transform opacity-0 scale-95" 
