@@ -14,7 +14,8 @@
         <!-- Scripts -->
         @vite('resources/css/app.css')
         @livewireStyles()
-
+        @livewireScripts()
+        
     </head>
     <body class="h-full">
       <div class="min-h-full">
@@ -183,6 +184,5 @@
             </div>
           </main>
         </div>
-        @livewireScripts()
     </body>
 </html>
